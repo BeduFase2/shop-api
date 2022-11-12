@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const sequelize = require('../config/db')
 const jwt = require('jsonwebtoken')
 
@@ -10,7 +12,7 @@ const login = async (req, res) => {
   if (!user) return res.status(401).json({ message: 'Unauthorized' })
   if (!user.validPassword(body.password)) return res.status(401).json({ message: 'Invalid credentials!' })
 
-  const token = jwt.sign({ userId: user.id }, 'secretKey', {
+  const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRETKEY, {
     expiresIn: 3600
   })
 

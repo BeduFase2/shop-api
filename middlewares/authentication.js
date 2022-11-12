@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { response } = require('express')
 const jwt = require('jsonwebtoken')
 const sequelize = require('../config/db')
@@ -5,7 +7,7 @@ const sequelize = require('../config/db')
 const authenticate = (req, res, next) => {
   const { authorization } = req.headers
 
-  jwt.verify(authorization, 'secretKey', async (err, decoded) => {
+  jwt.verify(authorization, process.env.JWT_SECRETKEY, async (err, decoded) => {
     if(err) return res.status(401).json({ message: 'Unauthorized!' })
     req.user = await sequelize.models.users.findOne({ where: { id: decoded.userId } })
     next()

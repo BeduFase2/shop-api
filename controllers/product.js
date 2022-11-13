@@ -50,7 +50,7 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
     const { body, params: { id } } = req;
-    const product = await sequelize.models.products.findByPk(id);
+    const product = await productModel.findByPk(id);
     if (!product) {
         return res.status(404).json({ code: 404, message: 'No existe el producto' });
     }
@@ -65,7 +65,7 @@ const update = async (req, res) => {
 
 const drop = async (req, res) => {
     const { params: { id } } = req;
-    const product = await sequelize.models.products.findByPk(id);
+    const product = await productModel.findByPk(id);
     if (!product) {
         return res.status(404).json({ code: 404, message: 'No existe el producto' });
     }

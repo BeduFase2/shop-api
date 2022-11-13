@@ -4,6 +4,8 @@ const { response } = require('express')
 const jwt = require('jsonwebtoken')
 const sequelize = require('../config/db')
 
+const userModel = sequelize.models.users
+
 const authenticate = (req, res, next) => {
   const { authorization } = req.headers;
 
@@ -12,7 +14,7 @@ const authenticate = (req, res, next) => {
       console.error(err);
       return res.status(401).json({ message: 'No Autorizado' })
     }
-    req.user = await sequelize.models.users.findOne({ where: { id: decoded.userId } })
+    req.user = await userModel.findOne({ where: { id: decoded.userId } })
     next()
   })
 }

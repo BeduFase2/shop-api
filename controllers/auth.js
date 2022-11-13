@@ -3,9 +3,11 @@ require('dotenv').config()
 const sequelize = require('../config/db')
 const jwt = require('jsonwebtoken')
 
+const userModel = sequelize.models.users
+
 const login = async (req, res) => {
   const { body } = req
-  const user = await sequelize.models.users.findOne({
+  const user = await userModel.findOne({
     where: { email: body.email }
   })
 
@@ -21,7 +23,7 @@ const login = async (req, res) => {
 
 const signup = async (req, res) => {
   const { body } = req;
-  let user = await sequelize.models.users.findOne({
+  let user = await userModel.findOne({
     where: { email: body.email },
   });
 

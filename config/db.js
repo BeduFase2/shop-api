@@ -3,6 +3,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize')
 
 const userModel = require('../models/user')
+const productModel = require('../models/product')
 
 const sequelize = new Sequelize(
   process.env.DB_DATABASE,
@@ -16,7 +17,7 @@ const sequelize = new Sequelize(
   }
 )
 
-const models = [userModel]
+const models = [userModel, productModel]
 
 for (let model of models)
   model(sequelize)

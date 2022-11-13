@@ -9,14 +9,14 @@ const login = async (req, res) => {
     where: { email: body.email }
   })
 
-  if (!user) return res.status(401).json({ message: 'Unauthorized' })
-  if (!user.validPassword(body.password)) return res.status(401).json({ message: 'Invalid credentials!' })
+  if (!user) return res.status(401).json({ message: 'No autorizado' })
+  if (!user.validPassword(body.password)) return res.status(401).json({ message: 'Usuario o contraseña invalidos' })
 
   const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRETKEY, {
-    expiresIn: 3600
+    expiresIn: process.env.JWT_EXPIRESIN
   })
 
-  return res.json({ message: 'Athenticated successfully!', token })
+  return res.json({ token })
 }
 
 const signup = async (req, res) => {
@@ -26,7 +26,7 @@ const signup = async (req, res) => {
   });
 
   if (user) {
-    return res.status(400).json({ message: "this email is already registered" });
+    return res.status(400).json({ message: 'El correo ya fue registrado' });
   }
 
   user = await sequelize.models.users.create({
@@ -40,7 +40,7 @@ const signup = async (req, res) => {
   })
 
   await user.save();
-  return res.json({ message: 'Your account was created successfully' });
+  return res.json({ message: 'Registro existoso' });
 }
 
 module.exports = {

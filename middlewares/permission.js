@@ -4,7 +4,7 @@ const permission = (...allowedRoles) => {
     if (user && allowedRoles.includes(user.type)) {
       return next();
     }
-    return res.status(403).json({ message: 'Forbidden' });
+    return res.status(403).json({ message: 'Sin permisos en el sistema' });
   };
 }
 

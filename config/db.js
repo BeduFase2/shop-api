@@ -4,6 +4,7 @@ const { Sequelize } = require('sequelize')
 
 const userModel = require('../models/user')
 const productModel = require('../models/product')
+const reviewModel = require('../models/review')
 
 const sequelize = new Sequelize(
   process.env.DB_DATABASE,
@@ -17,7 +18,7 @@ const sequelize = new Sequelize(
   }
 )
 
-const models = [userModel, productModel]
+const models = [userModel, productModel, reviewModel]
 
 for (let model of models)
   model(sequelize)

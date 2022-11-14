@@ -30,6 +30,7 @@ router.put('/:id', async (req, res) => {
     content: body.content,
     productId: body.productId,
   });
+  
   return res.json({ data: updatedReview });
 });
 

@@ -14,6 +14,7 @@ router.post('/', async (req, res) => {
   const review = await sequelize.models.reviews.create({
     content: body.content,
     productId: body.productId,
+    userId: body.userId
   });
   await review.save();
   return res.status(201).json({ data: review });
@@ -29,8 +30,9 @@ router.put('/:id', async (req, res) => {
   const updatedReview = await review.update({
     content: body.content,
     productId: body.productId,
+    userId: body.userId
   });
-  
+
   return res.json({ data: updatedReview });
 });
 

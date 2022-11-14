@@ -11,6 +11,14 @@ module.exports = (sequelize) => sequelize.define('reviews', {
     },
     onDelete: 'CASCADE',
   },
+  userId: {
+    type: Sequelize.INTEGER,
+    references: {
+      model: 'users',
+      key: 'id',
+    },
+    onDelete: 'CASCADE',
+  },
   createdAt: DataTypes.DATE,
   updatedAt: DataTypes.DATE,
 }, {

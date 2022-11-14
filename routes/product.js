@@ -13,9 +13,9 @@ const {
 
 router.route('/')
     .get(permission('admin', 'client'), getAll)
-    .post(permission('admin'), create)
-    .put(permission('admin'), update)
-    .patch(permission('admin'), drop);
+    .post(permission('admin', 'client'), create)
+    .put(permission('admin', 'client'), update)
+    .patch(permission('admin', 'client'), drop);
 
 router.route('/filter')
     .get(permission('admin', 'client'), getByFilter);

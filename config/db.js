@@ -5,6 +5,7 @@ const { Sequelize } = require('sequelize')
 const userModel = require('../models/user')
 const productModel = require('../models/product')
 const reviewModel = require('../models/review')
+const saleModel = require('../models/sale')
 
 const sequelize = new Sequelize(process.env.DATABASE_URL)
 

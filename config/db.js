@@ -6,7 +6,7 @@ const userModel = require('../models/user')
 const productModel = require('../models/product')
 const reviewModel = require('../models/review')
 
-const sequelize = new Sequelize(process.env.POSTGRES_URI)
+const sequelize = new Sequelize(process.env.DATABASE_URL)
 
 const models = [userModel, productModel, reviewModel]
 

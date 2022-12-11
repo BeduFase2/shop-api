@@ -18,7 +18,10 @@
     "helmet": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.25.3"
+    "sequelize": "^6.25.3",
+    "sqlite3": "^5.1.2",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4"
   },
   "devDependencies": {
     "sequelize-cli": "^6.5.2"

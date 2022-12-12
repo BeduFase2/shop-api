@@ -9,6 +9,9 @@ const login = async (req, res) => {
   console.log('::::::::::req::::::::::');
   console.log(req);
 
+  console.log('::::::::::req.body::::::::::');
+  console.log(req.body);
+
   const { body } = req
 
   console.log('::::::::::body::::::::::');

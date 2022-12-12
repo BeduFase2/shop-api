@@ -6,6 +6,9 @@ const jwt = require('jsonwebtoken')
 const userModel = sequelize.models.users
 
 const login = async (req, res) => {
+  console.log('::::::::::req::::::::::');
+  console.log(req);
+
   const { body } = req
 
   console.log('::::::::::body::::::::::');

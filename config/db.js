@@ -15,7 +15,7 @@ for (let model of models)
   model(sequelize)
 
 sequelize.sync({
-  force: true
+  force: false
 });
 
 module.exports = sequelize

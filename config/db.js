@@ -9,7 +9,7 @@ const saleModel = require('../models/sale')
 
 const sequelize = new Sequelize(process.env.DATABASE_URL)
 
-const models = [userModel, productModel, reviewModel]
+const models = [userModel, productModel, reviewModel, saleModel]
 
 for (let model of models)
   model(sequelize)

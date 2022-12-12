@@ -7,9 +7,16 @@ const userModel = sequelize.models.users
 
 const login = async (req, res) => {
   const { body } = req
+
+  console.log('::::::::::body::::::::::');
+  console.log(body);
+  
   const user = await userModel.findOne({
     where: { email: body.email }
   })
+
+  console.log('::::::::::user::::::::::');
+  console.log(user);
 
   if (!user) return res.status(401).json({ message: 'No autorizado' })
   if (!user.validPassword(body.password)) return res.status(401).json({ message: 'Usuario o contraseña invalidos' })

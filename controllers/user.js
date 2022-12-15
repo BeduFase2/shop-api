@@ -8,6 +8,16 @@ const getAll = async (req, res) => {
     .catch(err => res.json({ message: 'Error', data: err }))
 }
 
+const verify = async (req, res) => {
+  try {
+    const { user } = req;
+    return res.json({name: user.name, email: user.email});
+  } catch(e) {
+    return res.status(401).json({ message: 'No Autorizado' })
+  }
+}
+
 module.exports = {
-  getAll
+  getAll,
+  verify
 }
